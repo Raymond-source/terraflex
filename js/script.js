@@ -19,10 +19,7 @@ function setFavicon() {
   const favicon = document.createElement("link");
   favicon.rel = "icon";
   favicon.type = "image/x-icon";
-  favicon.href = "images/logo/logo.ico";
-
-  // Force browser to not cache by adding timestamp (optional)
-  // favicon.href = 'images/logo.ico?' + new Date().getTime();
+  favicon.href = getLogoPath("logo.ico"); // Use centralized function
 
   // Add to head
   document.head.appendChild(favicon);
@@ -30,26 +27,13 @@ function setFavicon() {
   // Also create Apple Touch Icon for mobile devices
   const appleTouchIcon = document.createElement("link");
   appleTouchIcon.rel = "apple-touch-icon";
-  appleTouchIcon.href = "images/logo/logo.ico";
+  appleTouchIcon.href = getLogoPath("logo.ico"); // Use centralized function
   document.head.appendChild(appleTouchIcon);
-
-  // Force a reload of the favicon (hack for some browsers)
-  setTimeout(() => {
-    const tempLink = document.createElement("link");
-    tempLink.rel = "icon";
-    tempLink.href = "images/logo/logo.ico?" + new Date().getTime();
-    document.head.appendChild(tempLink);
-    setTimeout(() => {
-      if (tempLink.parentNode) {
-        tempLink.parentNode.removeChild(tempLink);
-      }
-    }, 100);
-  }, 100);
 }
 
-// Function to get logo path (centralized)
+// Function to get logo path (centralized) - UPDATED for logo subfolder
 function getLogoPath(filename) {
-  return `images/${filename}`;
+  return `images/logo/${filename}`;
 }
 
 // Format phone number for display
