@@ -13,6 +13,19 @@ const siteConfig = {
     linkedin: "#",
     instagram: "#",
   },
+  services: [
+    { id: "website-design", name: "Website Design" },
+    { id: "web-apps", name: "Web Applications" },
+    { id: "hosting", name: "Hosting Solutions" },
+    { id: "surveys", name: "Surveys & Analytics" },
+    { id: "graphic-design", name: "Graphic Design" },
+    { id: "power-bi", name: "Power BI & Data Management" },
+    { id: "starter-package", name: "Starter Package" },
+    { id: "business-package", name: "Business Package" },
+    { id: "enterprise-package", name: "Enterprise Package" },
+    { id: "multiple", name: "Multiple Services" },
+    { id: "custom", name: "Custom Solution" },
+  ],
 };
 
 // Generate WhatsApp URL
