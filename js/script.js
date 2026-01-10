@@ -1,5 +1,23 @@
 // js/script.js
 
+// Function to set favicon
+function setFavicon() {
+  // Create link element for favicon
+  const favicon = document.createElement("link");
+  favicon.rel = "icon";
+  favicon.type = "image/x-icon";
+  favicon.href = "images/logo/logo.ico";
+
+  // Add to head
+  document.head.appendChild(favicon);
+
+  // Also create Apple Touch Icon for mobile devices
+  const appleTouchIcon = document.createElement("link");
+  appleTouchIcon.rel = "apple-touch-icon";
+  appleTouchIcon.href = "images/logo/logo.ico";
+  document.head.appendChild(appleTouchIcon);
+}
+
 // Format phone number for display
 function formatPhoneNumber(phone) {
   if (!phone) return "";
@@ -498,6 +516,9 @@ const Components = {
 
   // Initialize all components
   initAll: function () {
+    // Set favicon first
+    setFavicon();
+
     this.loadHeader();
     this.loadFooter();
     this.loadWhatsAppButton();
