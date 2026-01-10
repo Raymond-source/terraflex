@@ -16,7 +16,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/x-icon" href="images/logo/logo.ico" />
+    <!-- Favicon will be loaded by JavaScript -->
   </head>
   <body>
     <!-- Floating WhatsApp Button - Will be populated by JavaScript -->
@@ -118,22 +118,9 @@
       <!-- Footer content will be loaded by JavaScript -->
     </footer>
 
-    <!-- Load config first, then components, then main script -->
+    <!-- Load config first, then main script -->
     <script src="js/config.js"></script>
-
     <script src="js/script.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Load components
-        Components.loadHeader();
-        Components.loadFooter();
-        Components.loadWhatsAppButton();
-
-        // Update all dynamic content from config
-        Components.updateContactInfo();
-        Components.updateCurrentYear();
-      });
-    </script>
+    <!-- No additional script needed - everything initializes automatically -->
   </body>
 </html>
-
