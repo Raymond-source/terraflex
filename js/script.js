@@ -1,12 +1,28 @@
 // js/script.js
 
-// Function to set favicon
+// Function to set favicon with fallback
 function setFavicon() {
-  // Create link element for favicon
+  // Remove any existing favicon first
+  const existingFavicon = document.querySelector('link[rel="icon"]');
+  if (existingFavicon) {
+    existingFavicon.parentNode.removeChild(existingFavicon);
+  }
+
+  const existingAppleIcon = document.querySelector(
+    'link[rel="apple-touch-icon"]'
+  );
+  if (existingAppleIcon) {
+    existingAppleIcon.parentNode.removeChild(existingAppleIcon);
+  }
+
+  // Create new favicon element
   const favicon = document.createElement("link");
   favicon.rel = "icon";
   favicon.type = "image/x-icon";
   favicon.href = "images/logo/logo.ico";
+
+  // Force browser to not cache by adding timestamp (optional)
+  // favicon.href = 'images/logo.ico?' + new Date().getTime();
 
   // Add to head
   document.head.appendChild(favicon);
@@ -16,6 +32,24 @@ function setFavicon() {
   appleTouchIcon.rel = "apple-touch-icon";
   appleTouchIcon.href = "images/logo/logo.ico";
   document.head.appendChild(appleTouchIcon);
+
+  // Force a reload of the favicon (hack for some browsers)
+  setTimeout(() => {
+    const tempLink = document.createElement("link");
+    tempLink.rel = "icon";
+    tempLink.href = "images/logo/logo.ico?" + new Date().getTime();
+    document.head.appendChild(tempLink);
+    setTimeout(() => {
+      if (tempLink.parentNode) {
+        tempLink.parentNode.removeChild(tempLink);
+      }
+    }, 100);
+  }, 100);
+}
+
+// Function to get logo path (centralized)
+function getLogoPath(filename) {
+  return `images/${filename}`;
 }
 
 // Format phone number for display
@@ -323,7 +357,7 @@ const Components = {
       <div class="container header-container">
         <a href="index.html" class="logo">
           <img
-            src="images/logo/logo-mark.png"
+            src="${getLogoPath("logo-mark.png")}"
             alt="Terraflex Logo"
             class="logo-img"
           />
@@ -444,7 +478,7 @@ const Components = {
               <span class="terra-part">Terra</span
               ><span class="flex-part">flex</span>
               <img
-                src="images/logo/logo.ico"
+                src="${getLogoPath("logo.ico")}"
                 alt="Terraflex Logo"
                 class="terraflex-icon"
               />
@@ -516,7 +550,7 @@ const Components = {
 
   // Initialize all components
   initAll: function () {
-    // Set favicon first
+    // Set favicon FIRST - before anything else
     setFavicon();
 
     this.loadHeader();
