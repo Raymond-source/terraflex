@@ -1,8 +1,8 @@
 // js/config.js
 const siteConfig = {
-  whatsappNumber: "27812194023",
-  phoneNumber: "+27812194023",
-  emergencyNumber: "+27664575904",
+  whatsappNumber: "27664575904",
+  phoneNumber: "+27664575904",
+  emergencyNumber: "+27812194023",
   email: "info@terraflex.co.za",
   address: "012 Central, 367 Helen Joseph Street, Pretoria CBD, Pretoria, 0002",
   whatsappMessage:
@@ -51,3 +51,4 @@ function formatPhoneNumber(phone) {
   }
   return phone;
 }
+
